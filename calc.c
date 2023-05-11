@@ -51,7 +51,6 @@ char productRule(char *arr, int length, char term)
 void tokenization (char *arr, char **arr2, char * token1)
 {
   
-
 char * token = strtok(arr, token1);
 int j = 0;
 while(token != NULL)
