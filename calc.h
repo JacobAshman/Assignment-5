@@ -23,4 +23,10 @@ if the term is a + or -, you can skip all this and just call the function again 
 if term is greater than length (this isnt gonna be exactly correct, just find what works) then the function is done and do nothing
 since it is a void function, you dont use return.
 */
+
+/*
+you are gonna need to make a function for derivation at a point as well.
+you do not need to use recursion
+i am confiednt you can figure this out
+*/
 void derivative (char **arr2, char *arr, char var, int term, int length);
