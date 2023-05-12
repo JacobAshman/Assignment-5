@@ -82,6 +82,7 @@ void derivative (char **arr2, char *arr, char var, int term, int length)
 }*/
     int power;
     int coef;
+    int check = 0;
     if (term != length)
     {
         if(strcmp(arr2[term], "-") == 0  || (strcmp(arr2[term], "+")) == 0)
@@ -94,8 +95,14 @@ void derivative (char **arr2, char *arr, char var, int term, int length)
             int i = 0;
             while(arr2[term][i] != 'x')
             {
+                if(arr2[term][i] == '\0')
+                {
+                    check = 1;
+                    break;
+                }
                 i++;
-                printf("%d\n", i);
+                //printf("%d\n", i);
+                
             }
             if(arr2[term][i+1] == '^')
             {
@@ -105,21 +112,48 @@ void derivative (char **arr2, char *arr, char var, int term, int length)
             {
                 power = 1;
             }
-            power = power - 1;
-
             coef = coef * power;
+            power = power - 1;
+            
             //printf("%d\n", power);
             //printf("%d\n", coef);
             char pow [13]; 
             char coe [13];
-            char ter[] = "x^"; 
-            sprintf(pow, "%d", power); 
-            sprintf(coe, "%d", coef);
+            char ter[] = {var, '^'}; 
+            if(power == 0)
+            {
+                if (check == 1)
+                {
+                    coef = 0;
+                }
+                
+                sprintf(coe, "%d", coef);
+                strcat(arr, coe);
+                
+            }
+            else if(power == 1)
+            {
+                char ter1[] = {var, '\0'};
+                sprintf(coe, "%d", coef);
+                strcat(arr, coe);
+                strcat(arr, ter1);
+            }
+            else{
+                printf("power = %d\n", power);
+                sprintf(pow, "%d", power);  
+                sprintf(coe, "%d", coef);
             //printf("%s\n", pow);
             //printf("%s\n", coe);
+            printf("pow = %s\n", pow);
             strcat(arr, coe);
+            printf("arr = %s\n", arr);
             strcat(arr, ter);
-            strcat(arr, pow);
+            printf("arr = %s\n", arr);
+            //strcat(arr, pow);
+            //printf("arr = %s\n", arr);
+            }
+     
+            
             derivative(arr2, arr, var, term + 1, length);
         }
     }
