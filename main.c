@@ -17,6 +17,8 @@ char Y;
 char * drunkDriving = malloc(sizeof(char) * 100);
 int x = 1;
 char var;
+char * solution = malloc(sizeof(char) * 100);
+double sol;
 int length;
 
 printf("Welcome to the fun and cool calculus calculator! \nDo you wish to compute an Integral or Derivative (1/2)\n");
@@ -37,9 +39,7 @@ getchar();
 //call the functions here please
 
 
-    indefiniteIntegral(drunkDriving, solution, var);
-    printf("%s+ c\n", solution);
-    memset(solution,0,strlen(solution));
+   
 
 
 
@@ -75,15 +75,19 @@ else
 */
 
 char * iAmDrunk = malloc(sizeof(char) * 100); 
-//int test = atoi(drunkCrashing[0]);
-//printf("%d\n", test);
 
+if(doi == 1)
+{
+ indefiniteIntegral(drunkDriving, solution, var);
+    printf("%s+ c\n", solution);
+    memset(solution,0,strlen(solution));
+}
+else{
 derivative(drunkCrashing, iAmDrunk, var, 0, length);
-printf("The Derivative function is :) %s\n", iAmDrunk);
+printf("The Derivative function is %s\n", iAmDrunk);
+}
 
 
-printf("do you wish to input another Equation? (Y/N)\n");
-scanf("%c", &Y);
 
 
 }
@@ -93,4 +97,3 @@ scanf("%c", &Y);
 
 
 
-}
