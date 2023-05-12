@@ -26,4 +26,4 @@ since it is a void function, you dont use return.
 
 void derivative (char **arr2, char *arr, char var, int term, int length);
 
-int definiteDerivative(char **arr2, char *arr, char var, int term, int length, int xbound);
+//int definiteDerivative(char **arr2, char *arr, char var, int term, int length, int xbound, int dAtPoint);

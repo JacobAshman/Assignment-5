@@ -25,6 +25,8 @@ printf("definite or indefinite?(1/2)\n");
 //printf("enter the expression with spaces between + signs, - signs, and the terms (variable can only be 1 character)\n");
 scanf("%d", &key);
 getchar();
+printf("if doing an integral, format must be [coef x^power + coef x^power]\n");
+printf("derivative format is [coefx^power + coefx^power]\n");
 printf("enter the expression with spaces between + signs, - signs, and the terms (variable can only be 1 character)\n");
 scanf("%[^\n]", drunkDriving);
 //printf("%s\n", drunkDriving);
@@ -85,14 +87,14 @@ else
 char * iAmDrunk = malloc(sizeof(char) * 100); 
 //int test = atoi(drunkCrashing[0]);
 //printf("%d\n", test);
-if(key == 1)
+if(key == 2)
 {
 derivative(drunkCrashing, iAmDrunk, var, 0, length);
-printf("The Derivative function is %s\n", iAmDrunk);
+printf("The Derivative function is :) %s\n", iAmDrunk);
 }
 else{
     int dAtPoint;
-    dAtPoint = definiteDerivative(drunkCrashing, iAmDrunk, var, 0, length, upperBoundOrX);
+    dAtPoint = definiteDerivative(drunkCrashing, iAmDrunk, var, 0, length, upperBoundOrX, 0);
     printf("The Derivative at the point %d is : %d\n", upperBoundOrX, dAtPoint);
     printf("The Derivative function is %s", iAmDrunk);
 }

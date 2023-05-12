@@ -74,13 +74,16 @@ create new string and concatenate it into arr (just google string concatenation)
 call the function again. but with term + 1.
 if the term is a + or -, you can skip all this and just call the function again with term + 1
 */
-int definiteDerivative(char **arr2, char *arr, char var, int term, int length, int xbound)
+/*
+int definiteDerivative(char **arr2, char *arr, char var, int term, int length, int xbound, int dAtPoint)
+
 {
   int power;
-  int dAtPoint;
+  
     int coef;
     int check = 0;
-    if (term != length)
+    int temp;
+    if (term != length + 1)
     {
         if(strcmp(arr2[term], "-") == 0  || (strcmp(arr2[term], "+")) == 0)
         {
@@ -109,11 +112,17 @@ int definiteDerivative(char **arr2, char *arr, char var, int term, int length, i
             {
                 power = 1;
             }
+            if (power == 1)
+            {
+            temp = coef;
+            }
             coef = coef * power;
             power = power - 1;
-
+            
             int bruh = pow(xbound, power);
-            int dAtPoint = coef * bruh;
+            dAtPoint += coef * bruh;
+            printf(":) = %d\n", dAtPoint);
+           
             
             //printf("%d\n", power);
             //printf("%d\n", coef);
@@ -129,6 +138,7 @@ int definiteDerivative(char **arr2, char *arr, char var, int term, int length, i
                 
                 sprintf(coe, "%d", coef);
                 strcat(arr, coe);
+                //dAtPoint += coef;
                 
             }
             else if(power == 1)
@@ -142,30 +152,27 @@ int definiteDerivative(char **arr2, char *arr, char var, int term, int length, i
                 printf("power = %d\n", power);
                 sprintf(pow, "%d", power);  
                 sprintf(coe, "%d", coef);
-            //printf("%s\n", pow);
-            //printf("%s\n", coe);
-            printf("pow = %s\n", pow);
+           
             strcat(arr, coe);
-            printf("arr = %s\n", arr);
+         
             strcat(arr, ter);
-            printf("arr = %s\n", arr);
-            //strcat(arr, pow);
-            //printf("arr = %s\n", arr);
+            
             }
      
-            
-            return dAtPoint + derivative(arr2, arr, var, term + 1, length, xbound);
+            printf(":() = %d\n", dAtPoint);
+            dAtPoint += definiteDerivative(arr2, arr, var, term + 1, length, xbound, dAtPoint);
         }
     }
     else{
+        printf("final = %d\n", dAtPoint);
         return dAtPoint;
     }
 
    
 
+*/
 
 
-}
 void derivative (char **arr2, char *arr, char var, int term, int length)
 {
     /*for(int i = 0; i < length; i++)
