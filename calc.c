@@ -63,4 +63,65 @@ while(token != NULL)
 }
 
 }
+/* 
+arr2 is the array of strings
+take string 1
+loop through it until you find the x to get the coefficient
+then after the x, if no carrot is power of 1, if carrot everything after the carrot is the power 
+convert both to ints (there is a built in function in c for this)
+run power rule on it
+create new string and concatenate it into arr (just google string concatenation)
+call the function again. but with term + 1.
+if the term is a + or -, you can skip all this and just call the function again with term + 1
+*/
+void derivative (char **arr2, char *arr, char var, int term, int length)
+{
+    /*for(int i = 0; i < length; i++)
+{
+    printf("%s\n", arr2[i]);
+}*/
+    int power;
+    int coef;
+    if (term != length)
+    {
+        if(strcmp(arr2[term], "-") == 0  || (strcmp(arr2[term], "+")) == 0)
+        {
+            strcat(arr, arr2[term]);
+            derivative(arr2, arr, var, term + 1, length);
+        }
+        else{
+            coef = atoi(arr2[term]);
+            int i = 0;
+            while(arr2[term][i] != 'x')
+            {
+                i++;
+                printf("%d\n", i);
+            }
+            if(arr2[term][i+1] == '^')
+            {
+                power = atoi(arr2[term] + (i+2));
+            }
+            else
+            {
+                power = 1;
+            }
+            power = power - 1;
 
+            coef = coef * power;
+            //printf("%d\n", power);
+            //printf("%d\n", coef);
+            char pow [13]; 
+            char coe [13];
+            char ter[] = "x^"; 
+            sprintf(pow, "%d", power); 
+            sprintf(coe, "%d", coef);
+            //printf("%s\n", pow);
+            //printf("%s\n", coe);
+            strcat(arr, coe);
+            strcat(arr, ter);
+            strcat(arr, pow);
+            derivative(arr2, arr, var, term + 1, length);
+        }
+    }
+
+}

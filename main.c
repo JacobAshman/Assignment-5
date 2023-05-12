@@ -81,6 +81,12 @@ else
     printf("can use power rule\n");
 }
 */
+
+char * iAmDrunk = malloc(sizeof(char) * 100); 
+int test = atoi(drunkCrashing[0]);
+//printf("%d\n", test);
+derivative(drunkCrashing, iAmDrunk, var, 0, length);
+printf("%s\n", iAmDrunk);
 printf("do you wish to input another Equation? (Y/N)\n");
 scanf("%c", &Y);
 if (Y == 'N')
