@@ -232,6 +232,7 @@ void derivative (char **arr2, char *arr, char var, int term, int length)
             }
             else if(power == 1)
             {
+                printf("help\n");
                 char ter1[] = {var, '\0'};
                 sprintf(coe, "%d", coef);
                 strcat(arr, coe);
@@ -243,13 +244,13 @@ void derivative (char **arr2, char *arr, char var, int term, int length)
                 sprintf(coe, "%d", coef);
             //printf("%s\n", pow);
             //printf("%s\n", coe);
-            //printf("pow = %s\n", pow);
+            printf("pow = %s\n", pow);
             strcat(arr, coe);
-            //printf("arr = %s\n", arr);
+            printf("arr = %s\n", arr);
             strcat(arr, ter);
-            //printf("arr = %s\n", arr);
+            printf("arr = %s\n", arr);
             strcat(arr, pow);
-            //printf("arr = %s\n", arr);
+            printf("arr = %s\n", arr);
             }
      
             

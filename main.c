@@ -23,17 +23,22 @@ int length;
 
 printf("Welcome to the fun and cool calculus calculator! \nDo you wish to compute an Integral or Derivative (1/2)\n");
 scanf("%d", &doi);
+//printf("test 1 = %d\n", doi);
 getchar();
 printf("if doing an integral, format must be [coef x^power + coef x^power]\n");
 printf("derivative format is [coefx^power + coefx^power]\n");
 printf("enter the expression with spaces between + signs, - signs, and the terms (variable can only be 1 character)\n");
 scanf("%[^\n]", drunkDriving);
+//printf("test 2 = %s\n", drunkDriving);
+getchar();
 //printf("%s\n", drunkDriving);
 printf("please enter the number of terms in your expression(do not count + or - signs)\n");
 scanf("%d", &length);
-
+getchar();
+//printf("test 3 =%d\n", length);
 printf("which variable?\n");
 scanf("%c", &var);
+//printf("test 4 = %c", var);
 getchar();
 
 //call the functions here please
@@ -84,7 +89,7 @@ if(doi == 1)
 }
 else{
 derivative(drunkCrashing, iAmDrunk, var, 0, length);
-printf("The Derivative function is %s\n", iAmDrunk);
+printf("The Derivative function is %s \n", iAmDrunk);
 }
 
 
