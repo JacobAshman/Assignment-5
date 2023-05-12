@@ -24,6 +24,13 @@ if term is greater than length (this isnt gonna be exactly correct, just find wh
 since it is a void function, you dont use return.
 */
 
+
+
+void indefiniteIntegral (char *originalString, char *solution, char var);
+
+double definiteIntegral(char *input, int a, int b, char var);
+
+
 void derivative (char **arr2, char *arr, char var, int term, int length);
 
 //int definiteDerivative(char **arr2, char *arr, char var, int term, int length, int xbound, int dAtPoint);

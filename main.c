@@ -54,6 +54,17 @@ getchar();
 
 //call the functions here please
 
+if(key == 2 && doi == 1){
+    indefiniteIntegral(drunkDriving, solution, var);
+    printf("%s+ c\n", solution);
+    memset(solution,0,strlen(solution));
+}
+
+if(key == 1 && doi == 1){
+    sol = definiteIntegral(drunkDriving, upperBoundOrX, lowerBoundOrY, var);
+    printf("%g", sol);
+}
+
 //delimeter written for your conviencence, feel free to move it into the functions
 char **drunkCrashing = malloc(40 * sizeof(char*));
 for (int i = 0; i < 40; i++)

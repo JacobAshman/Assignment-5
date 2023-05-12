@@ -258,3 +258,183 @@ void derivative (char **arr2, char *arr, char var, int term, int length)
     }
 
 }
+
+
+void indefiniteIntegral (char *originalString, char *solution, char var)
+{
+int i = 0;
+int q = 0;
+int w = 0;
+int newPower = 0;
+int numberInt = 0;
+char * number = malloc(sizeof(char) * 100);
+char * power = malloc(sizeof(char) * 100);
+char * temp = malloc(sizeof(char) * 100);
+int length = strlen(originalString);
+while(i < length) {
+    if(originalString[i] == 32){
+        i++;
+    }
+    while((originalString[i] >= 48 && originalString[i] <= 57)){
+        number[q] = originalString[i];
+        q++;
+        i++;
+    }
+    if(originalString[i] == var){
+        number[0] = '1';
+        i++;
+        if(originalString[i] == 94){
+            i++;
+            while((originalString[i] >= 48 && originalString[i] <= 57)){
+                power[w] = originalString[i];
+                w++;
+                i++;
+            }
+        newPower = atof(power) + 1;
+        numberInt = atof(number);
+        sprintf(temp, "(%d/%d)%c^%d ", numberInt, newPower, var, newPower);
+        strcat(solution, temp);
+        memset(temp,0,strlen(temp));
+        } else if (originalString[i] == 32 || originalString[i] == 0){
+            newPower = 2;
+            numberInt = atof(number);
+            sprintf(temp, "(%d/%d)%c^%d ", numberInt, newPower, var, newPower);
+            strcat(solution, temp);
+            memset(temp,0,strlen(temp));
+        }
+        i++;
+        if (originalString[i] == 43 || originalString[i] == 45 || originalString[i] == 0) {
+            sprintf(temp, "%c ", originalString[i]);
+            strcat(solution, temp);
+            memset(temp,0,strlen(temp));
+            i++;
+        }
+    }
+    i++;
+    if (originalString[i] == var) {
+        i++;
+        if(originalString[i] == 94){
+            i++;
+            while((originalString[i] >= 48 && originalString[i] <= 57)){
+                power[w] = originalString[i];
+                w++;
+                i++;
+            }
+        newPower = atof(power) + 1;
+        numberInt = atof(number);
+        sprintf(temp, "(%d/%d)%c^%d ", numberInt, newPower, var, newPower);
+        strcat(solution, temp);
+        memset(temp,0,strlen(temp));
+        } else if (originalString[i] == 32 || originalString[i] == 0){
+            newPower = 2;
+            numberInt = atof(number);
+            sprintf(temp, "(%d/%d)%c^%d ", numberInt, newPower, var, newPower);
+            strcat(solution, temp);
+            memset(temp,0,strlen(temp));
+        }
+        i++;
+        if (originalString[i] == 43 || originalString[i] == 45 || originalString[i] == 0) {
+            sprintf(temp, "%c ", originalString[i]);
+            strcat(solution, temp);
+            memset(temp,0,strlen(temp));
+            i++;
+        }
+    } else if(originalString[i] == 43 || originalString[i] == 45 || originalString[i] == 0 ){
+        numberInt = atof(number);
+        sprintf(temp, "%d%c %c ", numberInt, var, originalString[i]);
+        strcat(solution, temp);
+        memset(temp,0,strlen(temp));
+        i++;
+    }
+    memset(power,0,strlen(power));
+    memset(number,0,strlen(number));
+    q = 0;
+    w = 0;
+}
+
+}
+
+double definiteIntegral(char *input, int a, int b, char var){
+    int i = 0;
+    int q = 0;
+    int w = 0;
+    int u = 0;
+    int pon = 1;
+    double answer = 0;
+    double answerA = 0;
+    double answerB = 0;
+
+    char * number = malloc(sizeof(char) * 100);
+    char * power = malloc(sizeof(char) * 100);
+    char * solution = malloc(sizeof(char) * 100);
+    char * numerator = malloc(sizeof(char) * 100);
+    char * denominator = malloc(sizeof(char) * 100);    
+
+
+    indefiniteIntegral(input, solution, var);
+
+    while(i < strlen(solution)) {
+        if(solution[i] == 32){
+            i++;
+        }
+        if(solution[i] == 43){
+            pon = 1;
+            i++;
+        } else if(solution[i] == 45) {
+            pon = 0;
+            i++;
+        }
+        if(solution[i] == 40){
+            i++;
+        }
+        while((solution[i] >= 48 && solution[i] <= 57)){
+            number[q] = solution[i];
+            q++;
+            i++;
+        }
+        if(solution[i] == 47){
+            strcat(numerator, number);
+            i++;
+            while(solution[i] >= 48 && solution[i] <= 57){
+                denominator[w] = solution[i];
+                i++;
+                w++;
+            }
+            if (solution[i] == 41){
+                i = i + 3;
+                while((solution[i] >= 48 && solution[i] <= 57)){
+                    power[u] = solution[i];
+                    u++;
+                    i++;
+                }
+
+            }
+            
+            answerA = pow(a, atof(power)) * (atof(numerator) / atof(denominator));
+            answerB = pow(b, atof(power)) * (atof(numerator) / atof(denominator));
+        }
+        if(solution[i] == var) {
+            answerA = atof(number) * a;
+            answerB = atof(number) * b;
+        }
+        
+        if(pon == 1){
+            answer =+ answerA;
+            answer =- answerB;
+        }
+        else if(pon == 0){
+            answer =- answerA;
+            answer =+ answerB;
+        }
+        answerA = 0;
+        answerB = 0;
+        memset(power,0,strlen(power));
+        memset(number,0,strlen(number));
+        q = 0;
+        w = 0;
+        u = 0;
+    }
+
+    return answer;
+
+}
