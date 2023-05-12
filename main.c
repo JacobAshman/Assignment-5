@@ -21,7 +21,7 @@ int length;
 while(x == 1){
 printf("Welcome to the fun and cool calculus calculator! \nDo you wish to compute an Integral or Derivative (1/2)\n");
 scanf("%d", &doi);
-printf("definite or indefinite?\n");
+printf("definite or indefinite?(1/2)\n");
 //printf("enter the expression with spaces between + signs, - signs, and the terms (variable can only be 1 character)\n");
 scanf("%d", &key);
 getchar();
@@ -83,10 +83,19 @@ else
 */
 
 char * iAmDrunk = malloc(sizeof(char) * 100); 
-int test = atoi(drunkCrashing[0]);
+//int test = atoi(drunkCrashing[0]);
 //printf("%d\n", test);
+if(key == 1)
+{
 derivative(drunkCrashing, iAmDrunk, var, 0, length);
-printf("%s\n", iAmDrunk);
+printf("The Derivative function is %s\n", iAmDrunk);
+}
+else{
+    int dAtPoint;
+    dAtPoint = definiteDerivative(drunkCrashing, iAmDrunk, var, 0, length, upperBoundOrX);
+    printf("The Derivative at the point %d is : %d\n", upperBoundOrX, dAtPoint);
+    printf("The Derivative function is %s", iAmDrunk);
+}
 printf("do you wish to input another Equation? (Y/N)\n");
 scanf("%c", &Y);
 if (Y == 'N')
